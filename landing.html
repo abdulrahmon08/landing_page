@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design and Development Agency - thoughtbot</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: rgb(29, 0, 0);
+        }
+
+        .dropback {
+            background: rgb(29, 0, 0);
+        }
+
+        a:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: rgb(255, 217, 0) !important;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* ✅ Make dropdowns full-width on small screens */
+        @media (max-width: 576px) {
+            .dropdown-menu {
+                position: static !important;
+                width: 100% !important;
+                border: none;
+                border-radius: 0;
+            }
+
+            .dropdown-menu .row {
+                flex-direction: column;
+            }
+
+            .dropdown-menu .col-12 {
+                border-right: none !important;
+                border-bottom: 1px solid rgb(34, 34, 34);
+                padding: 10px 0;
+            }
+        }
+
+        .product {
+            border: 1px solid rgb(158, 255, 234);
+            border-radius: 20px;
+            padding: 10px;
+            color: rgb(158, 255, 234);
+        }
+
+        .back {
+            /* background-color: rgb(41, 41, 41);
+            border-radius: 100px;
+            height: 200px;
+            /* left: 0; */
+            position: absolute;
+            /* width: 200px; */
+            z-index: 10;
+        }
+
+        .testimonial {
+            max-width: 700px;
+            margin: 100px auto;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .author-info {
+            font-size: 0.9rem;
+        }
+
+        .author-info strong {
+            display: block;
+        }
+
+        .circle-bg {
+            position: absolute;
+            left: 20%;
+            transform: translate(-50%);
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            /* faint white */
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .case-study {
+            max-width: 800px;
+            margin: 80px auto;
+        }
+
+        .tags .badge {
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            background: transparent;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            margin: 0 5px 10px 0;
+        }
+
+        .case-study p {
+            color: #bbb;
+            margin-top: 15px;
+        }
+
+        .case-study a {
+            color: #f8d57e;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .case-study a:hover {
+            text-decoration: underline;
+        }
+
+        .case-study a::after {
+            content: "→";
+            margin-left: 10px;
+            transition: margin-left 0.2s;
+        }
+
+        .case-study a:hover::after {
+            margin-left: 15px;
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #bbb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #bbb;
+        }
+
+        a.highlight-link {
+            color: #f8d57e;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        a.highlight-link:hover {
+            text-decoration: underline;
+        }
+
+        a.highlight-link::after {
+            content: "→";
+            margin-left: 8px;
+            transition: margin-left 0.2s;
+        }
+
+        a.highlight-link:hover::after {
+            margin-left: 12px;
+        }
+
+        .clients-logos img {
+            max-height: 40px;
+            margin: 15px;
+            filter: grayscale(100%) brightness(200%);
+            opacity: 0.9;
+        }
+
+        .clients-logos img:hover {
+            opacity: 1;
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        .list li {
+            padding: 10px;
+        }
+
+        .card {
+            background: rgb(29, 0, 0);
+            padding: 30px;
+        }
+        .started{
+            border-radius: 20px;
+        }
+        .started { text-decoration: none;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(29, 0, 0);">
+            <div class="container-fluid">
+                <!-- Brand/Logo -->
+                <a class="navbar-brand" href="#">thoughtbot</a>
+
+                <!-- Toggler (hamburger) for mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+
+                        <!-- Dropdown -->
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Services
+                            </a>
+                            <div class="dropdown-menu w-100 text-white dropback">
+                                <div class="container py-3">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3"
+                                            style="border-right: 1px solid rgb(34, 34, 34);">
+                                            <h5>Development</h5>
+                                            <a href="#">Ruby on Rails</a><br>
+                                            <a href="#">Hotwire</a><br>
+                                            <a href="#">AI and Machine Learning</a><br>
+                                            <a href="#">Maintenance</a><br>
+                                            <a href="#">Mobile</a>
+                                        </div>
+                                        <div class="col-12 col-md-3"
+                                            style="border-right: 1px solid rgb(34, 34, 34);">
+                                            <h5>Design</h5>
+                                            <a href="#">Discovery Sprints</a><br>
+                                            <a href="#">UX, UI, and Product Design</a><br>
+                                            <a href="#">Design Systems</a>
+                                        </div>
+                                        <div class="col-12 col-md-3"
+                                            style="border-right: 1px solid rgb(34, 34, 34);">
+                                            <h5>Product</h5>
+                                            <a href="#">MVP</a><br>
+                                            <a href="#">Product Management</a><br>
+                                            <a href="#">Accessibility</a>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <h5>Accessibility</h5>
+                                            <a href="#">Team Augmentation</a><br>
+                                            <a href="#">Fractional Leadership</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <a href="#">View all Resources</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Case Study</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+
+                        <!-- Resources Dropdown -->
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Resources
+                            </a>
+                            <div class="dropdown-menu w-100 text-white dropback">
+                                <div class="container py-3">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6"
+                                            style="border-right: 1px solid rgb(34, 34, 34);">
+                                            <h5>Development</h5>
+                                            <a href="#">Tech Leadership Resources</a><br>
+                                            <a href="#">Open Source</a><br>
+                                            <a href="#">Books</a><br>
+                                            <a href="#">The Bike Shed Podcast</a><br>
+                                            <a href="#">Live Streaming on YouTube</a><br>
+                                            <a href="#">Conference Talks</a>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <h5>The business of great software</h5>
+                                            <a href="#">Playbook</a><br>
+                                            <a href="#">Giant Robots Smashing Podcast</a><br>
+                                            <a href="#">Design Sprint Guide</a><br>
+                                            <a href="#">Live Streaming on LinkedIn</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <a href="#">View all Resources</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Button -->
+                    <button class="btn btn-danger text-white started" href="#">Let's get started!</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-12 col-md-2 mb-3 mb-md-0">
+                    <img src="img/hero_1.svg" alt="hero_1" class="img-fluid">
+                </div>
+                <div class="col-12 col-md-6 mb-3 mb-md-0">
+                    <div class="text-white">
+                        <p class="h2 mb-4">Let's make your product and team a success</p>
+                        <p>
+                            thoughtbot is your expert partner for product design and development.
+                            We help our clients lead the way through better products, faster teams, and stronger growth.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <img src="img/hero_2.svg" alt="hero_2" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-white mt-4 text-center">
+            <div class="container">
+            <div class="d-flex flex-column flex-sm-row gap-3 pb-3">
+                <span><img src="img/a.svg" alt="img" class="img-fluid" style="max-height: 40px;"></span>
+                <span class="fs-4">Featured case study</span>
+                <span><img src="img/pic2.svg" alt="img" class="img-fluid" style="max-height: 40px;"></span>
+            </div>
+            </div>
+            <div class="position-relative embed-responsive embed-responsive-16by9">
+                <!-- Video with autoplay -->
+                <video id="customVideo" class="embed-responsive-item w-100" autoplay muted playsinline>
+                    <source src="img/aJT9NaTt2nPbZ-jw_HBR_InfiniteScroll_homepage_compressed.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <button id="playPauseBtn"
+                    class="btn btn-dark btn-sm rounded-circle position-absolute d-flex align-items-center justify-content-center"
+                    style="bottom: 10px; right: 10px; width: 40px; height: 40px;">
+                    <i class="bi bi-pause-fill fs-5"></i>
+                </button>
+            </div>
+
+            <script>
+                const video = document.getElementById('customVideo');
+                const playPauseBtn = document.getElementById('playPauseBtn');
+                const playPauseIcon = playPauseBtn.querySelector('i');
+
+                playPauseBtn.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play();
+                        playPauseIcon.className = 'bi bi-pause-fill fs-5';
+                    } else {
+                        video.pause();
+                        playPauseIcon.className = 'bi bi-play-fill fs-5';
+                    }
+                });
+            </script>
+        </div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="case-study">
+                        <h2 class="mb-4">Harvard Business Review</h2>
+
+                        <div class="tags mb-3">
+                            <span class="badge">Product Management</span>
+                            <span class="badge">UX, UI, & Product Design</span>
+                            <span class="badge">React Native</span>
+                        </div>
+
+                        <p>
+                            How thoughtbot designed and built a user-validated mobile app for the Harvard Business
+                            Review
+                        </p>
+
+                        <a href="#">Read about how we helped HBR</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 fs-5">
+                    <div class="container position-relative">
+                        <div class="circle-bg"></div>
+                        <div class="testimonial">
+                            <span>The thoughtbot team felt like our partners, not just people who deliver work and go. A
+                                lot of companies promise to work very closely with the client, but thoughtbot really
+                                delivered on that.</span>
+
+                            <div class="author mt-3">
+                                <img src="img/pic3.avif" alt="Author">
+                                <div class="author-info">
+                                    <strong>Marta Kusztra</strong>
+                                    Director of UX & Product Design, HBR
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container my-5">
+                <!-- Services Section -->
+                <div class="row mb-5">
+                    <div class="col-md-7 col-12">
+                        <div class="section-title">Our Services</div>
+                        <h2>Your expert partners for building mission-driven products</h2>
+                        <p>
+                            Benefit from over 20 years of experience designing and building successful products.
+                            Whether you're a founder with a new idea, a product owner at a large enterprise,
+                            or somewhere in between, thoughtbot can help you solve meaningful problems with a design-led
+                            approach.
+                            Work with a small, dedicated team of project-focused product experts built to fit the needs
+                            of your project.
+                        </p>
+                        <a href="#" class="highlight-link">Learn more about our services</a>
+                    </div>
+
+                    <div class="col-md-5 col-12">
+                        <h5 class="mb-3">For every stage of your business</h5>
+                        <ul class="fs-5 text-decoration-underline list">
+                            <li><a href="#">Rapid validation and early product strategy</a></li>
+                            <li><a href="#">Building a new product and roadmap planning</a></li>
+                            <li><a href="#">Team augmentation and process improvement</a></li>
+                            <li><a href="#">DevOps, Cloud, CI/CD</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Clients Section -->
+                <div class="row py-5">
+                    <div class="col-12 col-md-6 d-flex align-items-center">
+                        <div>
+                        <div class="section-title">Over 1,000+ Positive Outcomes</div>
+                        <h2>Our Clients</h2>
+                        <p>
+                            We are proud to partner with clients of all stages, sizes and industries on meaningful work.
+                        </p>
+                        <a href="#" class="highlight-link">Here are their stories</a>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-6 clients-logos">
+                        <div class="row py-3">
+                            <div class="col-3">
+                                <img src="img/p1.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p2.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p3.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p4.avif" class="w-100" alt="img">
+                            </div>
+
+                            <div class="col-3">
+                                <img src="img/p5.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p6.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p7.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p8.avif" class="w-100" alt="img">
+                            </div>
+
+                            <div class="col-3">
+                                <img src="img/p9.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p10.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p11.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p12.avif" class="w-100" alt="img">
+                            </div>
+
+                            <div class="col-3">
+                                <img src="img/p13.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p14.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p15.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p16.avif" class="w-100" alt="img">
+                            </div>
+
+                            <div class="col-3">
+                                <img src="img/p17.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p18.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p19.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p20.avif" class="w-100" alt="img">
+                            </div>
+
+                            <div class="col-3">
+                                <img src="img/p21.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p22.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p23.avif" class="w-100" alt="img">
+                            </div>
+                            <div class="col-3">
+                                <img src="img/p24.avif" class="w-100" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <img src="img/pic4.avif" class="w-100" alt="img">
+                </div>
+                <div class="col-12 col-md-6 py-2">
+                    <p>Service Highlight</p>
+                    <h3 class="py-2">Streamline your workflows with Artificial Intelligence (AI)</h3>
+                    <p class="py-2 fs-5">Reimagine your company's future by developing your own custom Generative AI
+                        applications. thoughtbot can help you find opportunities to leverage OpenAI's ChatGPT to
+                        streamline internal workflows and stay ahead of the competition.</p>
+                    <a href="#" class="highlight-link">Drive innovation with AI</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="container text-white">
+            <div>
+                <p>Client Success</p>
+                <h2>Positive outcomes for hundreds of web and <br> mobile projects like yours</h2>
+            </div>
+            <div class="card-deck">
+                <div class="row p-3">
+                    <div class=" card col-12 col-md-6">
+                        <img src="img/pic5.avif" alt="img" class="w-100 img-fluid">
+                        <p class="fs-5"><b>HBR </b>— Future-proofing Harvard Business Review to inspire the next
+                            generation of global business leaders.</p>
+                    </div>
+                    <div class=" card col-12 col-md-6">
+                        <img src="img/pic6.avif" alt="img" class="w-100">
+                        <p class="fs-5"><b>Generative AI</b> — Transforming healthcare experiences with artificial
+                            intelligence and machine learning</p>
+                    </div>
+                    <div class=" card col-12 col-md-6">
+                        <img src="img/pic7.avif" alt="img" class="w-100">
+                        <p class="fs-5"><b>CloseKnit</b> — Creating a scalable, multi-platform solution for virtual
+                            urgent care.</p>
+                    </div>
+                    <div class=" card col-12 col-md-6">
+                        <img src="img/pic8.avif" alt="img" class="w-100">
+                        <p class="fs-5"><b>Groups Recover Together</b> — Increasing access to effective opioid-addiction
+                            care through a new digital platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-5" style="background-color: rgb(59, 21, 21);">
+            <div class="container">
+                <p>
+                    “We were so impressed by how collaborative and organized thoughtbot’s <br>
+                    cross-functional team was. They were able to work through unexpected <br>
+                    challenges with strategic focus. That remained consistent throughout our <br>
+                    nine-month engagement.
+                </p>
+                <div class="row text-white w-75">
+                    <div class="col">
+                        <div class="author mt-3">
+                            <img src="img/pic.1.avif" alt="Author">
+                            <div class="author-info">
+                                <strong>Anne Bartholomew</strong>
+                                Director of Product Management, Harvard Business Review
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href="#" class="highlight-link">Read the Harvard Business Review case study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-white py-5">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <img src="img/pic.2.avif" class="w-100" alt="img">
+                </div>
+                <div class="col-12 col-md-6 py-2">
+                    <p>Our company</p>
+                    <h3 class="py-2">Purpose-driven teams</h3>
+                    <p class="py-2 fs-5">Our team is driven by our purpose and values; we continually improve our
+                        process, do our best work in strong partnerships with you, and transparently share how we work.
+                        We now have teammates located throughout the Americas, Europe, West Asia, and Africa enabling us
+                        to take on client projects around the world.</p>
+                    <a href="#" class="highlight-link">Learn more about our company</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="container text-white">
+            <div>
+                <p>Resources for Designers, Developers, and Leaders</p>
+                <h3>Reap the rewards of everything we’ve learned while building successful products</h3>
+            </div>
+            <div class="container text-white">
+                <div class="row">
+                    <div class="card col-12 col-md-4">
+                        <h4>Tech Leadership</h4>
+                        <p>A quick-library to help your team level up processes and decision-making.</p>
+                        <a href="#" class="highlight-link">Dive into our resources</a>
+                    </div>
+                    <div class="card col-12 col-md-4">
+                        <h4>Design Sprint Guide</h4>
+                        <p>Our guide to conducting and facilitating Product Design Sprints.</p>
+                        <a href="#" class="highlight-link">Start your sprint</a>
+                    </div>
+                    <div class="card col-12 col-md-4">
+                        <h4>Upcase</h4>
+                        <p>Become an experienced developer and take “junior” out of your title.</p>
+                        <a href="#" class="highlight-link">Learn from the experts</a>
+                    </div>
+
+                    <div class="card col-12 col-md-4">
+                        <h4>Our Playbook</h4>
+                        <p>Our documented approach to making successful web and mobile products.</p>
+                        <a href="#" class="highlight-link">Discover a better way of working</a>
+                    </div>
+                    <div class="card col-12 col-md-4">
+                        <h4>Our Blog</h4>
+                        <p>The latest design, development, and product tools, techniques and more.</p>
+                        <a href="#" class="highlight-link">Stay current on best practices</a>
+                    </div>
+                    <div class="card col-12 col-md-4">
+                        <h4>Giant Robots Smashing Into Other Giant Robots Podcast</h4>
+                        <p>A podcast about the design, development, and business of great software.</p>
+                        <a href="#" class="highlight-link">Listen and subscribe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-white py-5" style="background-color: rgb(54, 0, 54);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <h3>What does success look like for your project?
+                        </h3>
+                    </div>
+                    <div class="col-12 col-md-4 text-end">
+                        <button class="btn btn-light" style="background-color: white; border-radius: 20px;">Let's talk!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-white py-5">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h2>thoughtbot</h2>
+                </div>
+                <div class="col-12 col-md-4 text-decoration-underline">
+                    <div class="row">
+                        <div class="col">
+                            <a href="#">Service</a><br>
+                            <a href="#">Case Studies</a><br>
+                            <a href="#">Resources</a><br>
+                            <a href="#">Let's Talk</a>
+                        </div>
+                        <div class="col">
+                            <a href="#">Our Company</a><br>
+                            <a href="#">Careers</a><br>
+                            <a href="#">Purpose</a><br>
+                            <a href="#">Blog</a><br>
+                            <a href="#">Events</a><br>
+                            <a href="#">Sponsor</a>
+                        </div>
+                        <div class="col">
+                            <a href="#">Mastodon</a><br>
+                            <a href="#">Bluesky</a><br>
+                            <a href="#">GutHub</a><br>
+                            <a href="#">Youtube</a><br>
+                            <a href="#">Twitch</a><br>
+                            <a href="#">Feeds</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container text-muted py-5">
+            <div class="row">
+                <div class="col-12 col-md-6 p-5">
+                    <small>© 2025 thoughtbot, inc</small>
+                    <small>The design of a robot and thoughtbot are registered trademarks of thoughtbot, inc.</small>
+                </div>
+                <div class="col-12 col-md-6 p-5">
+                    <a href="" class="text-decoration-underline">US: +1 (877) 9-ROBOTS</a> &nbsp;
+                    <a href="#" class="text-decoration-underline"> UK: +44 (0)20 3807 0560</a>
+                    <p class="pt-3">Beware of fraudulent thoughtbot job listings <a href="#">Learn more</a></p>
+                    <a href="#" class="text-decoration-underline">Code of Conduct</a> &nbsp;
+                    <a href="#" class="text-decoration-underline"> Accessibility Statement</a> &nbsp;
+                    <a href="#" class="text-decoration-underline"> Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ✅ Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
